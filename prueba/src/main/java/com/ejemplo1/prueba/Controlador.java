@@ -8,7 +8,7 @@ public class Controlador {
 
     @GetMapping({"/", "/index"})
     public String welcome() {
-        return
+        return "index";
 
 
     }
