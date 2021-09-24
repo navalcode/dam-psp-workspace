@@ -27,7 +27,19 @@ public class TaskController {
         return ResponseEntity
                 .status(HttpStatus.CREATED)
                 .body(respository.save(task)); //Con este código mandamos el código de respuesta correcto, guardamos en
-        //el repositorio los datos y además devolvemos la información. 
+        //el repositorio los datos y además devolvemos la información.
+    }
+
+    @GetMapping("/{id}")
+    public Task findOne(@PathVariable ("id")Long id){
+        return respository.findById(id).orElse(null);
+    }
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> deleteOne(@PathVariable ("id") Long id){
+
+         respository.deleteById(id);
+         return ResponseEntity.noContent().build();
+        // return ResponseEntity.status(204).build();
     }
 
 

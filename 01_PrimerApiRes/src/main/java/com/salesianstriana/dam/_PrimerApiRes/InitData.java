@@ -5,7 +5,7 @@ import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
 import java.util.Arrays;
-
+//Esta clase tiene como función añadir algunos datos de inicio a la base de datos mientras funcione sin persistencia.
 @Component
 @RequiredArgsConstructor
 public class InitData {
