@@ -49,13 +49,20 @@ public class TaskController {
         return ResponseEntity.noContent().build();
         // return ResponseEntity.status(204).build();
     }
+
+    //Este método actualiza la información de un elemento dado su id.
     @PutMapping("/{id}")
     public Task edit(@RequestBody Task task, @PathVariable Long id){
 
+        //En primer lugar recuperamos el elemento que queremos modificar.
         Task antigua = respository.findById(id).orElse(null);
+        //Ahora seteamos en la antigua task los parámetros que sacamos del body otorgado por el cliente.
+        //es decir task.getParámetro().
+
         antigua.setText(task.getText());
         antigua.setTitle(task.getTitle());
 
+        //Finalmente devolvemos la tarea modificada que estamos guardando.
         return respository.save(antigua);
 
     }
