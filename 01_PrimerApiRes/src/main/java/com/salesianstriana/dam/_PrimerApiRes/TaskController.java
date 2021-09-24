@@ -30,16 +30,34 @@ public class TaskController {
         //el repositorio los datos y además devolvemos la información.
     }
 
+    //Este método nos permite encontrar una entidad por su id.
     @GetMapping("/{id}")
-    public Task findOne(@PathVariable ("id")Long id){
+    public Task findOne(@PathVariable("id") Long id) {
+        //devuelve un elemento, task, por su id. En caso de no encontrarlo devuelve null.
+        // Además devuelve el código por defecto 200, ok.
         return respository.findById(id).orElse(null);
     }
-    @DeleteMapping("/{id}")
-    public ResponseEntity<?> deleteOne(@PathVariable ("id") Long id){
 
-         respository.deleteById(id);
-         return ResponseEntity.noContent().build();
+    //Este método nos permite eliminar una entidad por su id.
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> deleteOne(@PathVariable("id") Long id) {
+
+        //Primero borramos del repositorio el elemento dado su id.
+        respository.deleteById(id);
+        //Posteriormente lanzamos un mensaje al cliente, en este caso debemos mandar un código 204.
+        //podemos hacerlos de las dos maneras siguientes.
+        return ResponseEntity.noContent().build();
         // return ResponseEntity.status(204).build();
+    }
+    @PutMapping("/{id}")
+    public Task edit(@RequestBody Task task, @PathVariable Long id){
+
+        Task antigua = respository.findById(id).orElse(null);
+        antigua.setText(task.getText());
+        antigua.setTitle(task.getTitle());
+
+        return respository.save(antigua);
+
     }
 
 
