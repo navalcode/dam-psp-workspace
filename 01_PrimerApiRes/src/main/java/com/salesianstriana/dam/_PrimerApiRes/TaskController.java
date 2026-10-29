@@ -1,71 +1,59 @@
 package com.salesianstriana.dam._PrimerApiRes;
 
-import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
+import javax.transaction.Transactional;
+import lombok.RequiredArgsConstructor;
+import org.springframework.http.*;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
 @RestController
 @RequestMapping("/task")
 @RequiredArgsConstructor
-
+@Transactional
 public class TaskController {
+  private final TaskRepository repository;
 
-    private final TaskRepository respository;
+  @GetMapping("/")
+  public List<Task> findAll() {
+    return repository.findAll();
+  }
 
-    @GetMapping("/")
-    public List<Task> findAll() {
-        return respository.findAll();
-    }
+  @PostMapping("/")
+  public ResponseEntity<Task> create(@RequestBody Task task) {
+    if (task.getId() != 0) throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+    validate(task);
+    return ResponseEntity.status(HttpStatus.CREATED)
+        .body(repository.save(new Task(task.getTitle(), task.getText())));
+  }
 
-    @PostMapping("/")
-    public ResponseEntity<Task> create(@RequestBody Task task) {
-        //return respository.save(task); //De esta forma funciona, pero no mandamos el código correcto http.
+  @GetMapping("/{id}")
+  public Task findOne(@PathVariable("id") Long id) {
+    return repository
+        .findById(id)
+        .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+  }
 
-        return ResponseEntity
-                .status(HttpStatus.CREATED)
-                .body(respository.save(task)); //Con este código mandamos el código de respuesta correcto, guardamos en
-        //el repositorio los datos y además devolvemos la información.
-    }
+  @DeleteMapping("/{id}")
+  public ResponseEntity<Void> deleteOne(@PathVariable("id") Long id) {
+    repository.delete(findOne(id));
+    return ResponseEntity.noContent().build();
+  }
 
-    //Este método nos permite encontrar una entidad por su id.
-    @GetMapping("/{id}")
-    public Task findOne(@PathVariable("id") Long id) {
-        //devuelve un elemento, task, por su id. En caso de no encontrarlo devuelve null.
-        // Además devuelve el código por defecto 200, ok.
-        return respository.findById(id).orElse(null);
-    }
+  @PutMapping("/{id}")
+  public Task edit(@RequestBody Task task, @PathVariable Long id) {
+    Task existing = findOne(id);
+    validate(task);
+    existing.setTitle(task.getTitle());
+    existing.setText(task.getText());
+    return repository.save(existing);
+  }
 
-    //Este método nos permite eliminar una entidad por su id.
-    @DeleteMapping("/{id}")
-    public ResponseEntity<?> deleteOne(@PathVariable("id") Long id) {
-
-        //Primero borramos del repositorio el elemento dado su id.
-        respository.deleteById(id);
-        //Posteriormente lanzamos un mensaje al cliente, en este caso debemos mandar un código 204.
-        //podemos hacerlos de las dos maneras siguientes.
-        return ResponseEntity.noContent().build();
-        // return ResponseEntity.status(204).build();
-    }
-
-    //Este método actualiza la información de un elemento dado su id.
-    @PutMapping("/{id}")
-    public Task edit(@RequestBody Task task, @PathVariable Long id){
-
-        //En primer lugar recuperamos el elemento que queremos modificar.
-        Task antigua = respository.findById(id).orElse(null);
-        //Ahora seteamos en la antigua task los parámetros que sacamos del body otorgado por el cliente.
-        //es decir task.getParámetro().
-
-        antigua.setText(task.getText());
-        antigua.setTitle(task.getTitle());
-
-        //Finalmente devolvemos la tarea modificada que estamos guardando.
-        return respository.save(antigua);
-
-    }
-
-
+  private void validate(Task task) {
+    if (task.getTitle() == null
+        || task.getTitle().isBlank()
+        || task.getTitle().length() > 255
+        || (task.getText() != null && task.getText().length() > 255))
+      throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+  }
 }

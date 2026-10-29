@@ -1,0 +1,110 @@
+[
+  {
+    "path": ".gitignore",
+    "sha256": "dcc1d61ea0ca0dedf6456f467d4c832743f68ea0144ec638a740ab231e3e4ee2"
+  },
+  {
+    "path": "01_PrimerApiRes/src/main/java/com/salesianstriana/dam/_PrimerApiRes/TaskController.java",
+    "sha256": "264a191ede604e86491134e3dd776c6f87d3c37a77451ffa912ca37f3e2a4de1"
+  },
+  {
+    "path": "01_PrimerApiRes/src/main/java/com/salesianstriana/dam/_PrimerApiRes/TaskErrors.java",
+    "sha256": "acefb5d396f9665fb904370ac7c130fbdb181e4e92bd82af4200296a5d36e101"
+  },
+  {
+    "path": "01_PrimerApiRes/src/main/resources/application.properties",
+    "sha256": "90efb495789389caa0e001c84a6e603c58909046409de8a9f3aeb5639e085b8a"
+  },
+  {
+    "path": "01_PrimerApiRes/src/test/java/com/salesianstriana/dam/_PrimerApiRes/TaskHttpTests.java",
+    "sha256": "393f0a82897e48b747bb23ffa44f10a5a3fbf432a9f0c1314589b5c8b02f4b40"
+  },
+  {
+    "path": "05_PrimerProyectoSpringData/src/main/resources/application.properties",
+    "sha256": "8a1a6d45b56f9abba61823f5eec30993748215e8cd81f1a12f04396ac8fbb02b"
+  },
+  {
+    "path": "05_PrimerProyectoSpringData/src/test/java/com/salesianostriana/dam/_PrimerProyectoSpringData/StudentPersistenceTests.java",
+    "sha256": "cd4c7091f1114c9a373f66520f0c8c62846ad0f6988004ddb533b274a0187ef9"
+  },
+  {
+    "path": "DESIGN.md",
+    "sha256": "eda81d260e2202292a6b97f1d955b9adf59ba7e77231eca9494575062a50d5db"
+  },
+  {
+    "path": "EO1/src/main/resources/application.properties",
+    "sha256": "67d97ea8f62a324ea2e9ea3d24255153ca06436370c437e8f0135d42cf6157a7"
+  },
+  {
+    "path": "EO1/src/test/java/com/eo1NavalManuel/EO1/GreetingHttpTests.java",
+    "sha256": "23d789bb3ed9505615511287ff6dda86d2e9b8eb13d29abe27dec0c65888cfe3"
+  },
+  {
+    "path": "README.es.md",
+    "sha256": "e63890a5f79229dce5cac4b441f2439c4c15c263a5dc5df87c9532ebea5cf2d4"
+  },
+  {
+    "path": "README.md",
+    "sha256": "50f5cf054ef397b9d7816fe02201464cd4e1bc7af47df3a5059211840b6aa7a4"
+  },
+  {
+    "path": "THIRD_PARTY.md",
+    "sha256": "9675306f5cfbc91853fa39ee5b29b62368c9490bdbf005fa7f88b8ad2eec3101"
+  },
+  {
+    "path": "demo/src/main/java/com/example/demo/Controller.java",
+    "sha256": "a815322ebfa750185a6935e29ce3a04d4299424b8dcd09c27305438d64b5def8"
+  },
+  {
+    "path": "demo/src/main/java/com/example/demo/PageLanguages.java",
+    "sha256": "3345f6e44ee52a00c8cb4ec1d7f57ffb55e90554b4626c3f03b2f00c0e0c98dc"
+  },
+  {
+    "path": "demo/src/main/resources/application.properties",
+    "sha256": "15d9a7c4ac3227961527299098a7eba17b492493424c1b6fde4ee5f45db10cef"
+  },
+  {
+    "path": "demo/src/main/resources/messages.properties",
+    "sha256": "2daac09e77c3fec347a25259ddc3736e4121354968b04390f454deceefe268c8"
+  },
+  {
+    "path": "demo/src/main/resources/messages_es.properties",
+    "sha256": "0ccb78445114bad92f994ee95921b4921d7fa251709ae5c93be6df84c74d5b27"
+  },
+  {
+    "path": "demo/src/main/resources/static/fonts/OFL.txt",
+    "sha256": "c676351bf8576b9aba743cd5eaa8c0e7ee0d51f805d720447b4df4ddb6a2e416"
+  },
+  {
+    "path": "demo/src/main/resources/static/fonts/Outfit.woff2",
+    "sha256": "ed629d88c2db8ace1b3ac85fbf1fe0223d7272defaa817d1955100101966f0fb"
+  },
+  {
+    "path": "demo/src/main/resources/static/styles.css",
+    "sha256": "3cf88a7ed9bfeee83fd4aed288e059201e9fc05e937d3e918b893e6ae240cccd"
+  },
+  {
+    "path": "demo/src/main/resources/templates/index.html",
+    "sha256": "2581e9e818cf3f4640a55356674d53968214229098a6bc7526aa896dbb84dd45"
+  },
+  {
+    "path": "demo/src/test/java/com/example/demo/GreetingPageTests.java",
+    "sha256": "0e260ee403f88e5e13b0c696cc6482c7820492fa11b597415b55225ccc18efc2"
+  },
+  {
+    "path": "docs/images/greeting-en-desktop.png",
+    "sha256": "47384896063b19b0e925304375ed8f5ddb0dec274e0c326e806fbe01a5278427"
+  },
+  {
+    "path": "docs/images/greeting-es-error.png",
+    "sha256": "fd737ccefa34ca1560ef73a073dc50f4ad237c3eef8af2c3ad451e2858f09909"
+  },
+  {
+    "path": "docs/images/greeting-es-mobile.png",
+    "sha256": "fbfab547b9c139acc25fb83f446cd002d7be9d12ed15bf16fa9449c240e8547e"
+  },
+  {
+    "path": "docs/verification.json",
+    "sha256": "aca2b21d9451bd0236e470eaa81152d67886f3e7b8b9b337b08af5560d0935b2"
+  }
+]

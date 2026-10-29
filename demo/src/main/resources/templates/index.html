@@ -1,11 +1,119 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Indice</title>
-</head>
-<body>
-<p>Hola mundo</p>
-
-</body>
+<html
+  lang="en"
+  xmlns:th="http://www.thymeleaf.org"
+  th:lang="${#locale.language}"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title th:text="#{page.title}">Spring MVC greeting</title>
+    <link rel="icon" href="data:," />
+    <link rel="stylesheet" th:href="@{/styles.css}" href="/styles.css" />
+  </head>
+  <body>
+    <a class="skip" href="#main" th:text="#{skip}">Skip to content</a>
+    <header>
+      <a class="brand" th:href="@{/(lang=${#locale.language})}">Spring MVC</a>
+      <nav aria-label="Language" th:attr="aria-label=#{language}">
+        <a
+          hreflang="es"
+          lang="es"
+          th:href="@{/(lang='es',name=${draftName})}"
+          th:attr="aria-current=${#locale.language == 'es' ? 'page' : null}"
+        >
+          ES
+        </a>
+        <span aria-hidden="true">/</span>
+        <a
+          hreflang="en"
+          lang="en"
+          th:href="@{/(lang='en',name=${draftName})}"
+          th:attr="aria-current=${#locale.language == 'en' ? 'page' : null}"
+        >
+          EN
+        </a>
+      </nav>
+    </header>
+    <main id="main" tabindex="-1">
+      <section class="intro" aria-labelledby="title">
+        <h1 id="title" th:text="#{headline}">One request, one template.</h1>
+        <p class="lead" th:text="#{lead}">
+          A name enters through the URL and appears in HTML.
+        </p>
+        <p th:text="#{context}">
+          A small Spring MVC exercise: receive a name, bind the model and render
+          a greeting.
+        </p>
+      </section>
+      <section class="lesson" aria-labelledby="greeting">
+        <h2
+          id="greeting"
+          th:text="${invalid ? #messages.msg('result.invalid') : #messages.msg('result.greeting', displayName.isEmpty() ? #messages.msg('world') : displayName)}"
+        >
+          Hello, world.
+        </h2>
+        <form method="get" th:action="@{/}">
+          <input type="hidden" name="lang" th:value="${#locale.language}" />
+          <label for="name" th:text="#{name.label}">Fictional name</label>
+          <p class="hint" id="name-hint" th:text="#{name.hint}">
+            Optional, up to 80 characters. This GET parameter appears in the
+            URL.
+          </p>
+          <div class="controls">
+            <input
+              id="name"
+              name="name"
+              type="text"
+              maxlength="80"
+              autocomplete="off"
+              th:value="${draftName}"
+              aria-describedby="name-hint"
+              th:attr="aria-invalid=${invalid ? 'true' : null},aria-describedby=${invalid ? 'name-hint name-error' : 'name-hint'},autofocus=${invalid ? 'autofocus' : null}"
+            />
+            <button type="submit" th:text="#{submit}">Greet</button>
+            <a
+              class="reset"
+              th:href="@{/(lang=${#locale.language})}"
+              th:text="#{reset}"
+            >
+              Use world
+            </a>
+          </div>
+          <p
+            id="name-error"
+            class="error"
+            role="alert"
+            th:if="${invalid}"
+            th:text="#{name.error}"
+          >
+            Use up to 80 characters, without line breaks or control characters.
+          </p>
+        </form>
+        <dl>
+          <div>
+            <dt><code>GET /</code></dt>
+            <dd th:text="#{flow.request}">
+              A GET request to / requests this page. Add ?name=Ada to try a
+              name.
+            </dd>
+          </div>
+          <div>
+            <dt><code>Controller.java</code></dt>
+            <dd th:text="#{flow.controller}">
+              The controller reads name, checks its length and adds it to the
+              model.
+            </dd>
+          </div>
+          <div>
+            <dt><code>index.html</code></dt>
+            <dd th:text="#{flow.template}">
+              Thymeleaf escapes the value and renders the greeting as HTML text.
+            </dd>
+          </div>
+        </dl>
+      </section>
+    </main>
+    <footer><p th:text="#{footer}">Learning example · No storage</p></footer>
+  </body>
 </html>

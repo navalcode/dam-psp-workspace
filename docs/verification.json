@@ -1,0 +1,79 @@
+{
+  "repository": "dam-psp-workspace",
+  "date": "2026-10-29",
+  "runtime": "macOS / Corretto 17.0.14",
+  "maven_goal": "verify in each standalone module",
+  "test_results": [
+    {
+      "repository": "dam-psp-workspace",
+      "module": "01_PrimerApiRes",
+      "label": "workspace-final-01_PrimerApiRes",
+      "exit_code": 0,
+      "junit": {
+        "tests": 14,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "log_sha256": "9250ce44ec2bfc1a10d9f546ca5c418f09bb0a9bb860ff18ae89b3c9af9a4efe"
+    },
+    {
+      "repository": "dam-psp-workspace",
+      "module": "EO1",
+      "label": "workspace-final-EO1",
+      "exit_code": 0,
+      "junit": {
+        "tests": 5,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "log_sha256": "e2b7f15cef401f37bc10b2bc4f600a6e274a39944dbf564fa53ca3d2e79e32fc"
+    },
+    {
+      "repository": "dam-psp-workspace",
+      "module": "05_PrimerProyectoSpringData",
+      "label": "workspace-final-05_PrimerProyectoSpringData",
+      "exit_code": 0,
+      "junit": {
+        "tests": 4,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "log_sha256": "978bd6aaaae75e93e8678283d5a34c675ed20572ad14152aab9bf27315aab1d0"
+    },
+    {
+      "repository": "dam-psp-workspace",
+      "module": "demo",
+      "label": "workspace-demo-completed",
+      "exit_code": 0,
+      "junit": {
+        "tests": 10,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "log_sha256": "74b97c77ed49f524ab68aa61b7208d1119ccae0003eb1ecddb332c554f335daf"
+    }
+  ],
+  "total_tests": 33,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 0,
+  "real_http_requests": 26,
+  "all_four_jar_resources_identical_to_source": true,
+  "model_only_jar_non_web_exit": 0,
+  "hosted_ci_added": false,
+  "dependencies_upgraded": false,
+  "limits": [
+    "Historical Spring Boot 2.5.4/2.5.5; no production/security or upgrade audit",
+    "No Java16 runtime execution",
+    "No device, store, screen-reader or formal WCAG claim"
+  ],
+  "screenshots": [
+    "docs/images/greeting-en-desktop.png",
+    "docs/images/greeting-es-mobile.png",
+    "docs/images/greeting-es-error.png"
+  ]
+}
